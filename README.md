@@ -4,14 +4,14 @@ Componente tecnico de entrada para EcoMarket SPA. Centraliza el acceso REST haci
 
 ## Responsable
 
-| Campo | Detalle |
-| --- | --- |
-| Responsable principal | Ignacio Valeria |
-| Componente | API Gateway |
-| Rama de trabajo | `feature/api-gateway` |
-| Base de datos | No aplica |
-| Puerto local | `8081` |
-| URL base local | `http://localhost:8081` |
+| Campo                 | Detalle                  |
+| --------------------- | ------------------------ |
+| Responsable principal | Ignacio Valeria          |
+| Componente            | API Gateway              |
+| Rama de trabajo       | `feature/api-gateway`    |
+| Base de datos         | No aplica                |
+| Puerto local          | `8081`                   |
+| URL base local        | `http://localhost:8081`  |
 
 ## Que hace
 
@@ -28,26 +28,6 @@ Componente tecnico de entrada para EcoMarket SPA. Centraliza el acceso REST haci
 - No tiene entidades JPA ni repositorios.
 - No reemplaza a los microservicios de dominio.
 - No almacena informacion del sistema.
-
-## Swagger / OpenAPI
-
-**El API Gateway NO expone Swagger ni OpenAPI** porque solo enruta peticiones
-hacia los microservicios; no implementa logica de negocio propia.
-
-La documentacion interactiva se debe consultar **directamente en cada MS**:
-
-| MS | Swagger UI | OpenAPI JSON |
-| --- | --- | --- |
-| ms-usuarios-identidad | http://localhost:8083/doc/swagger-ui.html | http://localhost:8083/api-docs |
-| ms-catalogo | http://localhost:8084/doc/swagger-ui.html | http://localhost:8084/api-docs |
-| ms-inventario-abastecimiento | http://localhost:8085/doc/swagger-ui.html | http://localhost:8085/api-docs |
-| ms-pedidos-ventas | http://localhost:8086/doc/swagger-ui.html | http://localhost:8086/api-docs |
-| ms-logistica-envios | http://localhost:8087/doc/swagger-ui.html | http://localhost:8087/api-docs |
-| ms-administracion-soporte | http://localhost:8088/doc/swagger-ui.html | http://localhost:8088/api-docs |
-| ms-reportes | http://localhost:8090/doc/swagger-ui.html | http://localhost:8090/api-docs |
-
-Intentar acceder a http://localhost:8081/doc/swagger-ui.html devuelve 404
-(Whitelabel Error Page) por diseno, no por error de configuracion.
 
 ## Tecnologias
 
@@ -77,23 +57,15 @@ management.endpoint.health.show-details=always
 
 ## Como ejecutar
 
-Desde la raiz del repositorio:
+Desde la raiz de este repositorio:
 
 ```powershell
-cd .\api-gateway\
 .\mvnw.cmd spring-boot:run
 ```
 
 ## Como probar
 
 ```powershell
-.\mvnw.cmd test
-```
-
-O entrando al directorio (recomendado):
-
-```powershell
-cd .\api-gateway\
 .\mvnw.cmd clean test
 ```
 
@@ -103,27 +75,27 @@ cd .\api-gateway\
 1. Iniciar MySQL o XAMPP.
 2. Levantar los microservicios necesarios.
 3. Levantar el API Gateway.
-4. Consumir endpoints desde Postman o cliente web usando http://localhost:8081.
+4. Consumir endpoints desde Postman usando http://localhost:8081.
 ```
 
 ## Rutas configuradas
 
-| Ruta Gateway | Microservicio destino | URL interna |
-| --- | --- | --- |
-| `/api/auth/**` | MS Usuarios e Identidad | `http://localhost:8083` |
-| `/api/usuarios/**` | MS Usuarios e Identidad | `http://localhost:8083` |
-| `/api/productos/**` | MS Catalogo | `http://localhost:8084` |
-| `/api/categorias/**` | MS Catalogo | `http://localhost:8084` |
-| `/api/inventario/**` | MS Inventario y Abastecimiento | `http://localhost:8085` |
-| `/api/stock/**` | MS Inventario y Abastecimiento | `http://localhost:8085` |
-| `/api/pedidos/**` | MS Pedidos y Ventas | `http://localhost:8086` |
-| `/api/ventas/**` | MS Pedidos y Ventas | `http://localhost:8086` |
-| `/api/envios/**` | MS Logistica de Envios | `http://localhost:8087` |
-| `/api/rutas/**` | MS Logistica de Envios | `http://localhost:8087` |
-| `/api/admin/**` | MS Administracion y Soporte | `http://localhost:8088` |
-| `/api/soporte/**` | MS Administracion y Soporte | `http://localhost:8088` |
-| `/api/v1/reportes/**` | MS Reportes                              | `http://localhost:8090` |
-| `/api/v1/kpis/**` | MS Reportes                              | `http://localhost:8090` |
+| Ruta Gateway         | Microservicio destino          | URL interna              |
+| -------------------- | ------------------------------ | ------------------------ |
+| `/api/auth/**`       | MS Usuarios e Identidad        | `http://localhost:8083`  |
+| `/api/usuarios/**`   | MS Usuarios e Identidad        | `http://localhost:8083`  |
+| `/api/productos/**`  | MS Catalogo                    | `http://localhost:8084`  |
+| `/api/categorias/**` | MS Catalogo                    | `http://localhost:8084`  |
+| `/api/inventario/**` | MS Inventario y Abastecimiento | `http://localhost:8085`  |
+| `/api/stock/**`      | MS Inventario y Abastecimiento | `http://localhost:8085`  |
+| `/api/pedidos/**`    | MS Pedidos y Ventas            | `http://localhost:8086`  |
+| `/api/ventas/**`     | MS Pedidos y Ventas            | `http://localhost:8086`  |
+| `/api/envios/**`     | MS Logistica de Envios         | `http://localhost:8087`  |
+| `/api/rutas/**`      | MS Logistica de Envios         | `http://localhost:8087`  |
+| `/api/admin/**`      | MS Administracion y Soporte    | `http://localhost:8088`  |
+| `/api/soporte/**`    | MS Administracion y Soporte    | `http://localhost:8088`  |
+| `/api/v1/reportes/**`| MS Reportes                    | `http://localhost:8090`  |
+| `/api/v1/kpis/**`    | MS Reportes                    | `http://localhost:8090`  |
 
 ## Ejemplos de uso
 
@@ -147,7 +119,7 @@ GET http://localhost:8081/actuator/health
 
 ## Documentacion relacionada
 
-- `../docs/api-gateway-rutas.md`
-- `../docs/arquitectura/arquitectura-microservicios.md`
-- `../docs/integracion/comunicacion-rest-entre-servicios.md`
-- `../docs/postman/postman-validacion.md`
+- [Rutas del API Gateway](https://github.com/Nachovn12/ecomarket-spa-docs/blob/main/docs/api-gateway-rutas.md)
+- [Arquitectura de microservicios](https://github.com/Nachovn12/ecomarket-spa-docs/blob/main/docs/arquitectura/arquitectura-microservicios.md)
+- [Comunicacion REST entre servicios](https://github.com/Nachovn12/ecomarket-spa-docs/blob/main/docs/integracion/comunicacion-rest-entre-servicios.md)
+- [Repositorio de documentacion](https://github.com/Nachovn12/ecomarket-spa-docs)
