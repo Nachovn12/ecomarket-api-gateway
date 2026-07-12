@@ -68,12 +68,12 @@ spring:
                 - Path=/api/soporte/tickets,/api/soporte/tickets/**
 
             - id: ms-reportes
-              uri: http://localhost:8090
+              uri: http://localhost:8089
               predicates:
                 - Path=/api/v1/reportes,/api/v1/reportes/**
 
             - id: ms-kpis
-              uri: http://localhost:8090
+              uri: http://localhost:8089
               predicates:
                 - Path=/api/v1/kpis,/api/v1/kpis/**
 
